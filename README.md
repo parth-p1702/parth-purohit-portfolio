@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # What you will learn
 - Latest Next.js
@@ -40,3 +41,7 @@
 5. npm i react-vertical-timeline-component
 6. npm i react-toastify
 7. npm i resend@0.16.0 - npm i @react-email/tailwind - npm i @react-email/components - npm i @react-email/render
+=======
+# My-portfolio
+My Portfolio - Personal Website
+>>>>>>> ca22294471a19c503344b0a0799a05918b97b2ca
