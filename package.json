@@ -36,6 +36,7 @@
     "vertical-timeline-component-react": "^3.0.4"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^5.14.5",
     "@types/react-vertical-timeline-component": "^3.3.6",
     "typescript": "^5.4.5"
   }

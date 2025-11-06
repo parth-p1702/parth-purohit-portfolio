@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 export default function Certificates() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -23,10 +22,13 @@ export default function Certificates() {
     updateScrollButtons();
     const el = containerRef.current;
     if (!el) return;
+
     const onResize = () => updateScrollButtons();
     const onScroll = () => updateScrollButtons();
+
     window.addEventListener("resize", onResize);
     el.addEventListener("scroll", onScroll, { passive: true });
+
     return () => {
       window.removeEventListener("resize", onResize);
       el.removeEventListener("scroll", onScroll);
@@ -36,12 +38,14 @@ export default function Certificates() {
   const scrollByCard = (direction: "left" | "right") => {
     const el = containerRef.current;
     if (!el) return;
+
     const firstCard = el.querySelector<HTMLElement>(".cert-card");
     const cardWidth =
       firstCard
         ? firstCard.offsetWidth +
           parseInt(getComputedStyle(firstCard).marginRight || "16")
         : el.clientWidth * 0.8;
+
     const distance = direction === "left" ? -cardWidth : cardWidth;
     el.scrollBy({ left: distance, behavior: "smooth" });
   };
@@ -49,48 +53,49 @@ export default function Certificates() {
   return (
     <section
       id="certificates"
-      className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-20 px-6 relative"
+      className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-20 px-4 sm:px-6"
     >
       <div className="max-w-6xl mx-auto text-center">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-12">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12">
           My Certificates
         </h1>
+        <p className="text-lg mb-8 text-center font-normal text-gray-500">
+          Some of my recent achievements
+        </p>
 
         <div className="relative">
-          {/* Left button */}
+          {/* Left button (desktop only) */}
           <button
             onClick={() => scrollByCard("left")}
             disabled={!canScrollLeft}
-            aria-label="Scroll left"
-            className={`absolute left-2 top-1/2 -translate-y-1/2 z-20 rounded-full p-2 shadow-md transition border 
-              ${
-                canScrollLeft
-                  ? "bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-100 hover:scale-105 border-gray-300 dark:border-gray-400"
-                  : "bg-white/60 text-gray-400 dark:bg-gray-700/60 dark:text-gray-400 border-gray-200 dark:border-gray-600 cursor-not-allowed"
-              }`}
+            className={`hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-20 rounded-full p-2 shadow-md transition border ${
+              canScrollLeft
+                ? "bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-100 hover:scale-105 border-gray-300 dark:border-gray-400"
+                : "bg-white/60 text-gray-400 dark:bg-gray-700/60 dark:text-gray-400 border-gray-200 dark:border-gray-600 cursor-not-allowed"
+            }`}
           >
-            <BsChevronLeft size={20} />
+            <span className="sr-only">Scroll left</span>
+            &#8592;
           </button>
 
-          {/* Right button */}
+          {/* Right button (desktop only) */}
           <button
             onClick={() => scrollByCard("right")}
             disabled={!canScrollRight}
-            aria-label="Scroll right"
-            className={`absolute right-2 top-1/2 -translate-y-1/2 z-20 rounded-full p-2 shadow-md transition border 
-              ${
-                canScrollRight
-                  ? "bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-100 hover:scale-105 border-gray-300 dark:border-gray-400"
-                  : "bg-white/60 text-gray-400 dark:bg-gray-700/60 dark:text-gray-400 border-gray-200 dark:border-gray-600 cursor-not-allowed"
-              }`}
+            className={`hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-20 rounded-full p-2 shadow-md transition border ${
+              canScrollRight
+                ? "bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-100 hover:scale-105 border-gray-300 dark:border-gray-400"
+                : "bg-white/60 text-gray-400 dark:bg-gray-700/60 dark:text-gray-400 border-gray-200 dark:border-gray-600 cursor-not-allowed"
+            }`}
           >
-            <BsChevronRight size={20} />
+            <span className="sr-only">Scroll right</span>
+            &#8594;
           </button>
 
           {/* Scrollable row */}
           <div
             ref={containerRef}
-            className="flex gap-8 overflow-x-auto no-scrollbar px-4 py-2 snap-x snap-mandatory"
+            className="flex flex-col sm:flex-row gap-6 sm:gap-8 overflow-x-auto no-scrollbar px-2 py-2 snap-x sm:snap-x snap-mandatory touch-pan-x"
             style={{
               WebkitOverflowScrolling: "touch",
               scrollBehavior: "smooth",
@@ -101,14 +106,16 @@ export default function Certificates() {
                 key={cert.id}
                 whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 200 }}
-                className="cert-card min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-5 shadow-md hover:shadow-xl snap-start"
+                className="cert-card flex-shrink-0 min-w-full sm:min-w-[280px] md:min-w-[360px] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-4 sm:p-5 shadow-md hover:shadow-xl snap-start"
               >
-                <h2 className="text-lg font-semibold mb-1">{cert.title}</h2>
+                <h2 className="text-base sm:text-lg font-semibold mb-1">
+                  {cert.title}
+                </h2>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
                   {cert.platform}
                 </p>
 
-                <div className="relative w-full h-44 mb-4 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-700">
+                <div className="relative w-full h-36 sm:h-44 mb-4 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-700">
                   <Image
                     src={cert.image}
                     alt={cert.title}
