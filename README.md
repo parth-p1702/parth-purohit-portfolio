@@ -1,47 +1,90 @@
-<<<<<<< HEAD
+# My Portfolio - Personal Website
 
-# What you will learn
-- Latest Next.js
-- Next.js App Router
+A modern, responsive portfolio website built with Next.js featuring dark/light mode, animations, and email functionality.
+
+## 🚀 Features
+- Latest Next.js with App Router
 - Next.js Server Actions
 - Client & Server Components
-- TypeScript (Beginner & Intermediate)
-- Tailwind CSS
-- Context API
+- TypeScript (Beginner & Intermediate level)
+- Tailwind CSS for styling
+- Context API for state management
 - Advanced Animations with Framer Motion
-- React.Email & Resend
+- Email functionality with React.Email & Resend
 - Custom React hooks
 - Fresh, modern UI design
 - Light & Dark mode
-- Responsive website
+- Fully Responsive design
 
-# Setup or Run project your own systum
-0. npm i  
-1. Add RESEND_API_KEY environment variable in .env.local => https://resend.com/api-keys
-2. In the send-email.ts action file, change the "to" email to your own email
-3. npm run dev
+## 🛠 Tech Stack
+**Frontend:** HTML, Tailwind CSS, TypeScript, React  
+**Framework:** Next.js 13.4.8  
+**Animation:** Framer Motion  
+**Email:** React.Email & Resend  
+**Icons:** React Icons
 
-# Tech Stack 
+## 📦 Installation & Setup
 
-1. HTML
-2. Tailwindcss
-3. TypeScript
-4. React
-5. Next.js (npx create-next-app@13.4.8)
-6. Framer motion
-7. Email
+### Prerequisites
+- Node.js installed on your system  
+- npm or yarn package manager
 
+### Steps to Run Locally
 
-# other Node packages used 
+#### 1. Clone the repository
+```bash
+git clone <your-repo-url>
+cd my-portfolio
+```
 
-1. npm i react-icons
-2. npm i framer-motion
-3. npm i --save clsx
-4. npm i react-intersection-observer
-5. npm i react-vertical-timeline-component
-6. npm i react-toastify
-7. npm i resend@0.16.0 - npm i @react-email/tailwind - npm i @react-email/components - npm i @react-email/render
-=======
-# My-portfolio
-My Portfolio - Personal Website
->>>>>>> ca22294471a19c503344b0a0799a05918b97b2ca
+#### 2. Install dependencies
+```bash
+npm install
+```
+
+#### 3. Environment Setup
+Create a `.env.local` file in the root directory and add your Resend API key:
+```text
+RESEND_API_KEY=your_resend_api_key_here
+```
+Get your API key from: [https://resend.com/api-keys](https://resend.com/api-keys)
+
+#### 4. Configure Email
+Navigate to the `send-email.ts` action file and change the **"to"** email address to your own email.
+
+#### 5. Run the development server
+```bash
+npm run dev
+```
+
+#### 6. Open your browser
+Visit [http://localhost:3000](http://localhost:3000) to view the application.
+
+## 📚 Additional Node Packages Used
+```bash
+npm i react-icons
+npm i framer-motion
+npm i --save clsx
+npm i react-intersection-observer
+npm i react-vertical-timeline-component
+npm i react-toastify
+npm i resend@0.16.0
+npm i @react-email/tailwind
+npm i @react-email/components
+npm i @react-email/render
+```
+
+## 🎯 What You'll Learn
+This project demonstrates:
+- Modern React development patterns
+- Next.js App Router implementation
+- TypeScript integration
+- Responsive design with Tailwind CSS
+- Advanced animations and transitions
+- Email functionality implementation
+- Context API for global state management
+- Custom hook creation
+- Dark/light mode implementation
+
+## 📞 Contact
+Feel free to reach out if you have any questions about setting up or running this project!
